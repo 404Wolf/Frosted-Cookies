@@ -1,0 +1,11 @@
+{
+  "project_name": "Java maven project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "company": "mycompany",
+  "website": "null",
+  "description": "This is a java-maven project",
+  "license": "MIT",
+  "author_name": "John Smith",
+  "author_email": "johnSmith@email.org",
+  "version": "1.0.0"
+}
