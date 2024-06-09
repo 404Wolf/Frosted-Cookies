@@ -1,0 +1,19 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "{{ cookiecutter.version }}",
+  "description": "{{ cookiecutter.description }}",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "node bundle.js",
+    "dev": "npx ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "{{ cookiecutter.author_name }}",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.21.4",
+    "pnpm": "^9.2.0",
+    "ts-node": "^10.9.2"
+  }
+}
