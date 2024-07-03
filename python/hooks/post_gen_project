@@ -1,4 +1,0 @@
-#!/bin/sh
-
-git add --a
-nix develop .#poetry
