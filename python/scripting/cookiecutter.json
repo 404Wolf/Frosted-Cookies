@@ -1,0 +1,9 @@
+{
+  "project_name": "Python3 project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "description": "This is a Python3 project",
+  "license": "MIT",
+  "author_name": "John Smith",
+  "author_email": "johnSmith@email.org",
+  "version": "0.1.0"
+}
