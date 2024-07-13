@@ -1,4 +1,4 @@
-rec {
+{
   description = "{{ cookiecutter.description }}";
 
   inputs = {
@@ -15,27 +15,19 @@ rec {
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        name = "{{ cookiecutter.project_slug }}";
         pkgs = import nixpkgs { inherit system; };
-
-        pyPkgs = [ pkgs.python312Packages.requests ];
+        python = pkgs.python3.withPackages (python-pkgs: [ python-pkgs.requests ]);
       in
       {
         packages = {
           default = pkgs.stdenv.mkDerivation {
-            inherit name;
-            src = ./.;
+            src = self;
             buildInputs = [
-              pkgs.python312
-              pkgs.pyright
-              pkgs.black
-            ] ++ pyPkgs;
+              pkgs.mkShellScriptBin "main" "${python}/bin/python3 main.py"
+            ];
             installPhase = ''
               mkdir -p $out/bin
-              cp -r * $out
-              cp $out/main.py $out/bin/${name}
-              echo '#!${pkgs.python312}/bin/python' | cat - $out/main.py > $out/bin/${name}
-              chmod +x $out/bin/${name}
+              cp main $out/bin
             '';
           };
         };
@@ -43,10 +35,10 @@ rec {
         devShells = {
           default = pkgs.mkShell {
             packages = [
-              pkgs.python312
+              python
               pkgs.pyright
               pkgs.black
-            ] ++ pyPkgs;
+            ];
           };
         };
       }
