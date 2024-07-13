@@ -1,6 +1,7 @@
-def main():
-    print("Hello world!")
+from selenium import webdriver
 
 if __name__ == "__main__":
-    main()
-
+    driver = webdriver.Chrome()
+    driver.get("https://example.com")
+    print(driver.title)
+    driver.quit()

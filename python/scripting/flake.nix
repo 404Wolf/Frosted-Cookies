@@ -16,20 +16,30 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
-        python = pkgs.python3.withPackages (python-pkgs: [ python-pkgs.requests ]);
+        python = pkgs.python3.withPackages (python-pkgs: [ python-pkgs.selenium ]);
       in
       {
-        packages = {
+        packages = rec {
           default = pkgs.stdenv.mkDerivation {
+            name = "main";
             src = self;
-            buildInputs = [
-              pkgs.mkShellScriptBin "main" "${python}/bin/python3 main.py"
-            ];
+            dontUnpack = true;
+            buildInputs = [ pkgs.makeWrapper ];
             installPhase = ''
               mkdir -p $out/bin
-              cp main $out/bin
+              cp ${script}/bin/* $out/bin
+            '';
+            postFixup = ''
+              wrapProgram $out/bin/main \
+                --set PATH $PATH:${
+                  pkgs.lib.makeBinPath [
+                    pkgs.chromedriver
+                    pkgs.ungoogled-chromium
+                  ]
+                }
             '';
           };
+          script = pkgs.writeShellScriptBin "main" "${python}/bin/python3 main.py";
         };
 
         devShells = {
