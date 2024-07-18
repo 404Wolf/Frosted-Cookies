@@ -6,10 +6,18 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = import nixpkgs { inherit system; };
-      in {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
         packages.default = pkgs.stdenv.mkDerivation {
           name = "cookiecutter";
           src = ./.;
@@ -20,5 +28,6 @@
             ln -s ${pkgs.cookiecutter}/bin/cookiecutter $out/bin/cookiecutter
           '';
         };
-      });
+      }
+    );
 }

@@ -1,5 +1,6 @@
 {
   "project_name": "Some LaTeX document.",
+  "document_name": "document.tex",
   "description": "This is a latex project",
   "author_name": "John Smith",
   "author_email": "johnSmith@email.org",
