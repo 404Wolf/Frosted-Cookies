@@ -12,20 +12,3 @@ else
     cookiecutter "$COOKIECUTTER_DIR/$CHOSEN_TEMPLATE"
 fi
 
-_complete_templates() {
-    local cur opts
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    opts=()
-
-    if [[ -d "$COOKIECUTTER_DIR" ]]; then
-        opts=("$COOKIECUTTER_DIR"/*)
-        opts=("${opts[@]##*/}")
-    fi
-
-    COMPREPLY=( "$(compgen -W "${opts[*]}" -- "${cur}")" )
-    return 0
-}
-
-complete -F _complete_templates cookiecutter
-
