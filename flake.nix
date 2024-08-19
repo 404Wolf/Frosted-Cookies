@@ -16,8 +16,9 @@
     in rec {
       packages.default = pkgs.writeShellApplication {
         name = "cookiecutter";
+        runtimeInputs = with pkgs; [cookiecutter];
         text = ''
-          COOKIECUTTER_DIR=${./src}
+          COOKIECUTTER_DIR=${./templates}
           ${builtins.readFile ./cookiecutter.sh}
         '';
       };
