@@ -1,5 +1,5 @@
 {
-  description = "Typst project template";
+  description = "{{ cookiecutter.description }}";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
