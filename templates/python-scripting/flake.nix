@@ -1,5 +1,5 @@
 {
-  description = "{{ cookiecutter.description }}";
+  description = "Python devshell";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -18,25 +18,16 @@
           pyPkgs.selenium
         ]);
       in {
-        packages = {
-          default = pkgs.writeShellApplicaation {
-            name = "{{ cookiecutter.slug }}";
-            runtimeInputs = [
-              python
-              pkgs.chromedriver
-              pkgs.ungoogled-chromium
-            ];
-            text = ''
-              python -O ${./main.py} $@
-            '';
-          };
-        };
         devShells = {
           default = pkgs.mkShell {
-            packages = [
+            shellHook = ''
+              conda install;
+            '';
+            packages = with pkgs; [
               python
-              pkgs.pyright
-              pkgs.black
+              conda
+              pyright
+              black
             ];
           };
         };
