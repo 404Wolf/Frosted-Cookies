@@ -1,0 +1,9 @@
+{
+  "project_name": "C++ Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "description": "This is a c++ project",
+  "license": "MIT",
+  "author_name": "John Smith",
+  "author_email": "johnSmith@email.org"
+}
+

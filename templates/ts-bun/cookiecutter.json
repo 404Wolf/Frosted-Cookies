@@ -1,0 +1,10 @@
+{
+  "project_name": "Typescript project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "description": "This is a typescript project",
+  "license": "MIT",
+  "author_name": "John Smith",
+  "author_email": "johnSmith@email.org",
+  "version": "1.0.0"
+}
+
