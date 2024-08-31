@@ -1,5 +1,6 @@
 {
-  "project_name": "Typst project",
+  "title": "Typst project",
+  "author": "John Smith",
   "description": "A typst project",
   "version": "1.0.0"
 }
