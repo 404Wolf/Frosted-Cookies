@@ -1,1 +1,4 @@
-{}
+{
+  "dirname": "nix",
+  "description": "A trivial nix flake"
+}
